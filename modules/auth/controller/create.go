@@ -28,8 +28,8 @@ func (ac *authController) Create(c echo.Context) error {
 		return c.JSON(utils.Response(http.StatusBadRequest, err, nil))
 	}
 
-	if userCreate.Username == "" || userCreate.Phone == "" {
-		return c.JSON(utils.Response(http.StatusBadRequest, errors.New("username or phone cannot be empty"), nil))
+	if userCreate.Username == "" && userCreate.Phone == "" {
+		return c.JSON(utils.Response(http.StatusBadRequest, errors.New("username and phone cannot be empty"), nil))
 	}
 	user, err := ac.athController.Create(userCreate)
 	if err != nil {

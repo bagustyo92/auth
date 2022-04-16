@@ -29,7 +29,7 @@ func (ac *authController) login(c echo.Context) error {
 	token, err := ac.athController.Login(userLogin)
 	if err != nil {
 		logger.MakeLogEntry(c).Error(err)
-		return c.JSON(utils.Response(http.StatusBadRequest, err, nil))
+		return c.JSON(utils.Response(http.StatusInternalServerError, err, nil))
 	}
 
 	return c.JSON(utils.Response(http.StatusOK, "OK", models.LoginResp{AccessToken: token}))

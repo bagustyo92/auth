@@ -15,7 +15,7 @@ import (
 	"github.com/bagustyo92/auth/config"
 
 	authCtrl "github.com/bagustyo92/auth/modules/auth/controller"
-	authRepo "github.com/bagustyo92/auth/modules/auth/repository"
+	authRepository "github.com/bagustyo92/auth/modules/auth/repository"
 	authSvc "github.com/bagustyo92/auth/modules/auth/service"
 
 	productCtrl "github.com/bagustyo92/auth/modules/converter/controller"
@@ -89,7 +89,7 @@ func main() {
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	// Module Auth
-	auth := authRepo.NewRepository(db)
+	auth := authRepository.NewRepository(db)
 	authService := authSvc.NewAuthService(auth)
 	authCtrl.NewAuthController(e, authService)
 

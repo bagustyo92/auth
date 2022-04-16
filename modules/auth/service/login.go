@@ -25,7 +25,7 @@ func (as *authService) Login(userLogin models.Auth) (string, error) {
 
 	// try login with phone number
 	if userLogin.Phone != "" {
-		if isPhoneNumber(userLogin.Phone) {
+		if !isPhoneNumber(userLogin.Phone) {
 			return "", errors.New("Invalid Phone Number")
 		}
 
