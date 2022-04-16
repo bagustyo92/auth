@@ -14,6 +14,14 @@ var (
 	DBName     string
 	DBURL      string
 	DBPort     string
+
+	CurrencyConverterAPIKey  string
+	CurrencyConverterAPIHost string
+
+	EfisheryAPIHost string
+
+	JWTSecret        string
+	JWTSigningMethod string
 )
 
 func getEnv(keyEnv string, fileEnv map[string]string) string {
@@ -40,4 +48,12 @@ func InitApp(envPath string) {
 	DBPassword = getEnv("DB_PASS", envFile)
 	DBPort = getEnv("DB_PORT", envFile)
 	DBURL = getEnv("DB_HOST", envFile)
+
+	CurrencyConverterAPIHost = getEnv("CURRENCY_CONVERTER_HOST", envFile)
+	CurrencyConverterAPIKey = getEnv("CURRENCY_CONVERTER_API_KEY", envFile)
+
+	JWTSecret = getEnv("JWT_SECRET_KEY", envFile)
+	JWTSigningMethod = getEnv("JWT_SIGNING_METHOD", envFile)
+
+	EfisheryAPIHost = getEnv("EFISHERY_API_HOST", envFile)
 }
