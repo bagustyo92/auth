@@ -19,8 +19,6 @@
 # Folder to ignore
 vendor/
 logs/
-docs/
-!docs/img/
 
 
 # Dependency directories (remove the comment below to include it)

@@ -1,0 +1,262 @@
+basePath: /
+definitions:
+  models.Auth:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        type: string
+      id:
+        type: integer
+      password:
+        type: string
+      phone:
+        type: string
+      role:
+        type: string
+      updatedAt:
+        type: string
+      username:
+        type: string
+    required:
+    - phone
+    - role
+    - username
+    type: object
+  models.LoginResp:
+    properties:
+      accessToken:
+        type: string
+    type: object
+  models.SummarizeCity:
+    properties:
+      area_provinsi:
+        type: string
+      average_price:
+        type: number
+      max_price:
+        type: integer
+      median_price:
+        type: number
+      min_price:
+        type: integer
+    type: object
+  models.SummarizeDate:
+    properties:
+      average_price:
+        type: integer
+      end_date:
+        type: string
+      max_price:
+        type: integer
+      median_price:
+        type: integer
+      min_price:
+        type: integer
+      start_date:
+        type: string
+    type: object
+  models.SummaryPriceList:
+    properties:
+      summary_based_on_city:
+        items:
+          $ref: '#/definitions/models.SummarizeCity'
+        type: array
+      summary_based_on_date:
+        items:
+          $ref: '#/definitions/models.SummarizeDate'
+        type: array
+    type: object
+  utils.MOResponse:
+    properties:
+      message:
+        type: object
+      payload:
+        type: object
+      statusCode:
+        type: integer
+    type: object
+host: localhost:8999
+info:
+  contact:
+    email: bagustyo92@gmail.com
+    name: Bagus Prasetyo
+    url: https://github.com/bagustyo92
+  description: This is a api based on efishery test purposes.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Efishery Test API
+  version: "1.0"
+paths:
+  /auth:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint will return account info based on token that received
+        at this endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Auth'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+      summary: Get account info using jwt token
+      tags:
+      - Account
+    post:
+      consumes:
+      - application/json
+      description: This endpoint will return jwt token based on username/phone and
+        password that received at this endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.LoginResp'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+      summary: This endpoint receive username, phone and password for getting the
+        JWT token
+      tags:
+      - Account
+  /auth/create:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint will return account info or creating account if username
+        is not exist, this endpoint also generating password for login
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Auth'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+      summary: Create or return existing account
+      tags:
+      - Account
+  /product-list:
+    get:
+      consumes:
+      - application/json
+      description: Fetch product from efishery endpoint and add data price in usd
+        at response
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+      summary: Fetch product from efishery endpoint and add data price in usd at response
+      tags:
+      - Product
+  /product-list/data-user:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint will return account info based on token that received
+        at this endpoint
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Auth'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+      summary: Get account info using jwt token
+      tags:
+      - Account
+  /product-list/summary:
+    get:
+      consumes:
+      - application/json
+      description: This endpoint will return summary price based on data that fetched
+        from efishery, based on province and also time
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SummaryPriceList'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/utils.MOResponse'
+      summary: This endpoint will return summary price based on data that fetched
+        from efishery, based on province and also time
+      tags:
+      - Product
+swagger: "2.0"
