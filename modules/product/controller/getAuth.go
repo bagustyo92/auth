@@ -20,7 +20,7 @@ import (
 // @Failure      404  {object}  utils.MOResponse
 // @Failure      500  {object}  utils.MOResponse
 // @Router       /product-list/data-user [get]
-func (cc *converterController) GetAuthData(c echo.Context) error {
+func (cc *productController) GetAuthData(c echo.Context) error {
 	authClaim := c.Get("auth").(models.JWTClaims)
 
 	data, err := cc.converterService.GetAuthData(authClaim)

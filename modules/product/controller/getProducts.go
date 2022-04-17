@@ -22,7 +22,7 @@ import (
 // @Failure      404  {object}  utils.MOResponse
 // @Failure      500  {object}  utils.MOResponse
 // @Router       /product-list [get]
-func (cc *converterController) GetProductList(c echo.Context) error {
+func (cc *productController) GetProductList(c echo.Context) error {
 	var (
 		err  error
 		data []reqModel.Price

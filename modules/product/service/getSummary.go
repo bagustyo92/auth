@@ -4,7 +4,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/bagustyo92/auth/modules/converter/models"
+	"github.com/bagustyo92/auth/modules/product/models"
 	reqModel "github.com/bagustyo92/auth/modules/request/models"
 )
 
@@ -15,22 +15,6 @@ func converStringToInt64(a string) int32 {
 	}
 
 	return int32(val)
-}
-
-func findMinimum(a, b int32) int32 {
-	if a < b {
-		return a
-	}
-
-	return b
-}
-
-func findMax(a, b int32) int32 {
-	if a > b {
-		return a
-	}
-
-	return b
 }
 
 func findMedian(data []float64) float64 {
@@ -45,7 +29,7 @@ func findMedian(data []float64) float64 {
 	return (data[medianIndex-1] + data[medianIndex]) / 2
 }
 
-func (cs *converterService) GetSummaryPriceList() (*models.SummaryPriceList, error) {
+func (cs *productService) GetSummaryPriceList() (*models.SummaryPriceList, error) {
 	var (
 		sumarizeCity = map[string][]reqModel.Price{}
 

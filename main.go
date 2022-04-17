@@ -19,8 +19,8 @@ import (
 	authRepository "github.com/bagustyo92/auth/modules/auth/repository"
 	authSvc "github.com/bagustyo92/auth/modules/auth/service"
 
-	productCtrl "github.com/bagustyo92/auth/modules/converter/controller"
-	productSvc "github.com/bagustyo92/auth/modules/converter/service"
+	productCtrl "github.com/bagustyo92/auth/modules/product/controller"
+	productSvc "github.com/bagustyo92/auth/modules/product/service"
 
 	"github.com/bagustyo92/auth/middleware/logger"
 	"github.com/labstack/echo/v4"

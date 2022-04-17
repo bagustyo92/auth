@@ -2,16 +2,16 @@ package controller
 
 import (
 	midAuth "github.com/bagustyo92/auth/middleware/auth"
-	"github.com/bagustyo92/auth/modules/converter/service"
+	"github.com/bagustyo92/auth/modules/product/service"
 	"github.com/labstack/echo/v4"
 )
 
-type converterController struct {
-	converterService service.ConverterServiceInterface
+type productController struct {
+	converterService service.ProductServiceInterface
 }
 
-func NewController(e *echo.Echo, convCtrl service.ConverterServiceInterface) {
-	handler := &converterController{
+func NewController(e *echo.Echo, convCtrl service.ProductServiceInterface) {
+	handler := &productController{
 		converterService: convCtrl,
 	}
 

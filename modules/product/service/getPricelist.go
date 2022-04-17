@@ -13,7 +13,7 @@ const (
 	usdToIdrCacheKey = "get.usd.to.idr.converter"
 )
 
-func (cs *converterService) GetPriceListIncludingPriceInUSD() ([]models.Price, error) {
+func (cs *productService) GetPriceListIncludingPriceInUSD() ([]models.Price, error) {
 	var (
 		aDollar   *float64
 		header    = http.Header{}

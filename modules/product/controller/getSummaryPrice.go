@@ -21,7 +21,7 @@ import (
 // @Failure      404  {object}  utils.MOResponse
 // @Failure      500  {object}  utils.MOResponse
 // @Router       /product-list/summary [get]
-func (cc *converterController) GetSummaryPrice(c echo.Context) error {
+func (cc *productController) GetSummaryPrice(c echo.Context) error {
 	authClaim := c.Get("auth").(models.JWTClaims)
 
 	if authClaim.Role == "" {

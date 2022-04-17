@@ -7,7 +7,7 @@ import (
 	"github.com/bagustyo92/auth/modules/request/efishery"
 )
 
-type converterService struct {
+type productService struct {
 	authService       service.AuthServiceInterface
 	currencyConverter converter.Interface
 	efishery          efishery.Interface
@@ -19,8 +19,8 @@ func NewService(
 	currConv converter.Interface,
 	efishery efishery.Interface,
 	cacher cache.Cacher,
-) ConverterServiceInterface {
-	return &converterService{
+) ProductServiceInterface {
+	return &productService{
 		authService:       authSvc,
 		currencyConverter: currConv,
 		efishery:          efishery,
