@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"sort"
 	"strconv"
 
@@ -88,8 +87,6 @@ func (cs *converterService) GetSummaryPriceList() (*models.SummaryPriceList, err
 
 		average = float32(total) / float32(len(datas))
 		median = findMedian(prices)
-
-		fmt.Println(provinceName, prices)
 
 		min = int32(prices[0])
 		max = int32(prices[len(prices)-1])

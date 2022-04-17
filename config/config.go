@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"strconv"
 
 	"github.com/bagustyo92/auth/middleware/logger"
 	"github.com/joho/godotenv"
@@ -22,6 +23,9 @@ var (
 
 	JWTSecret        string
 	JWTSigningMethod string
+
+	CacheDefaultTTL    int
+	CacheCleanInterval int
 )
 
 func getEnv(keyEnv string, fileEnv map[string]string) string {
@@ -56,4 +60,7 @@ func InitApp(envPath string) {
 	JWTSigningMethod = getEnv("JWT_SIGNING_METHOD", envFile)
 
 	EfisheryAPIHost = getEnv("EFISHERY_API_HOST", envFile)
+
+	CacheDefaultTTL, _ = strconv.Atoi(getEnv("CACHE_DEFAULT_TTL", envFile))
+	CacheCleanInterval, _ = strconv.Atoi(getEnv("CACHE_CLEAN_INTERVAL", envFile))
 }

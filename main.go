@@ -9,6 +9,7 @@ import (
 	"github.com/jinzhu/gorm"
 
 	"github.com/bagustyo92/auth/modules/auth/models"
+	"github.com/bagustyo92/auth/modules/cache"
 	"github.com/bagustyo92/auth/modules/request/converter"
 	"github.com/bagustyo92/auth/modules/request/efishery"
 
@@ -54,8 +55,6 @@ func main() {
 		os.Mkdir("logs", os.ModePerm)
 	}
 
-	fmt.Println(config.DBURL, config.DBName, config.DBPassword, config.DBPort)
-
 	var DBConnectionString string
 	if config.DBUsername == "" || config.DBPassword == "" {
 		DBConnectionString = fmt.Sprintf(":@tcp(%s:%s)/%s", config.DBURL, config.DBPort, config.DBName)
@@ -71,6 +70,8 @@ func main() {
 	db.AutoMigrate(&models.Auth{})
 
 	defer db.Close()
+
+	localCache := cache.DefaultLocalCache()
 
 	e := echo.New()
 	e.Use(logger.Logging)
@@ -94,7 +95,7 @@ func main() {
 	authCtrl.NewAuthController(e, authService)
 
 	// Module Product
-	productService := productSvc.NewService(authService, converter.NewRequest(), efishery.NewRequest())
+	productService := productSvc.NewService(authService, converter.NewRequest(), efishery.NewRequest(), localCache)
 	productCtrl.NewController(e, productService)
 
 	app := make(chan error)
