@@ -10,7 +10,7 @@ RUN apk update && apk upgrade && \
 WORKDIR /go/src/github.com/bagustyo92/auth
 COPY . .
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o auth
+RUN CGO_ENABLED=0 GOOS=linux go build -o cart_service
 
 # =======================================================================
 # Distribution
@@ -20,4 +20,4 @@ RUN apk update && apk upgrade
 # This log file just add because of error that it caused
 RUN mkdir log 
 COPY --from=builder /go/src/github.com/bagustyo92/auth .
-CMD [ "./auth" ]
+CMD [ "./cart_service" ]

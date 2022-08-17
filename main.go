@@ -5,21 +5,14 @@ import (
 	"os"
 	"strings"
 
+	"github.com/bagustyo92/auth/config"
+	"github.com/bagustyo92/auth/middleware/logger"
+	"github.com/bagustyo92/auth/modules/cart/controller"
+	"github.com/bagustyo92/auth/modules/cart/models"
+	"github.com/bagustyo92/auth/modules/cart/repository"
+	"github.com/bagustyo92/auth/modules/cart/service"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-
-	authService "github.com/bagustyo92/auth/modules/auth/service"
-	"github.com/bagustyo92/auth/modules/user/service"
-
-	"github.com/bagustyo92/auth/config"
-
-	"github.com/bagustyo92/auth/middleware/logger"
-	authController "github.com/bagustyo92/auth/modules/auth/controller"
-	authModels "github.com/bagustyo92/auth/modules/auth/models"
-	authRepo "github.com/bagustyo92/auth/modules/auth/repository"
-	"github.com/bagustyo92/auth/modules/user/controller"
-	"github.com/bagustyo92/auth/modules/user/models"
-	"github.com/bagustyo92/auth/modules/user/repository"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
@@ -52,7 +45,7 @@ func main() {
 	// 	os.Exit(1)
 	// }
 	db.LogMode(true)
-	db.AutoMigrate(&models.User{}, &authModels.Auth{})
+	db.AutoMigrate(&models.Cart{}, &models.ProductCart{})
 
 	defer db.Close()
 
@@ -62,15 +55,10 @@ func main() {
 		logger.MakeLogEntry(nil).Infof(strings.ReplaceAll(string(reqBody), "\r\n    ", ""))
 	}))
 
-	// Module User
-	userRepo := repository.NewUserRepo(db)
-	userService := service.NewUserService(userRepo)
-	controller.NewUserController(e, userService)
-
-	// Module Auth
-	authRepo := authRepo.NewAuthRepo(db)
-	auth := authService.NewAuthService(authRepo, userRepo)
-	authController.NewAuthController(e, auth)
+	// Module Cart
+	repo := repository.NewCartRepo(db)
+	svc := service.NewCartService(repo)
+	controller.NewUserController(e, svc)
 
 	app := make(chan error)
 	go func(app chan error) { app <- e.Start(":" + config.AppPort) }(app)

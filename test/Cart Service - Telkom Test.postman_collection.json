@@ -1,0 +1,560 @@
+{
+	"info": {
+		"_postman_id": "2f0db12f-dd54-4116-9073-06cb23f7eccf",
+		"name": "Cart Service - Telkom Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2047098"
+	},
+	"item": [
+		{
+			"name": "Cart Service",
+			"item": [
+				{
+					"name": "Add Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"a14cd162-a3e3-4368-a915-04369db2c8f2\",\n    \"products\":[{\n        \"product_name\":\"celana\",\n        \"product_code\":\"7\",\n        \"quantity\":2\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cart",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Cart",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"bf6b1006-7583-4e6f-a108-90936d39f22f\",\n    \"products\":[{\n        \"product_name\":\"sempak\",\n        \"product_code\":\"5\",\n        \"quantity\":2\n    }]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/cart",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cart"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 18:37:01 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cart/:cartID",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cart",
+								":cartID"
+							],
+							"query": [
+								{
+									"key": "product_name",
+									"value": "lana",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "cartID",
+									"value": "a14cd162-a3e3-4368-a915-04369db2c8f2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Cart",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/cart/:cartID",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cart",
+										":cartID"
+									],
+									"variable": [
+										{
+											"key": "cartID",
+											"value": "bf6b1006-7583-4e6f-a108-90936d39f22f"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 18:37:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "947"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"ID\": \"bf6b1006-7583-4e6f-a108-90936d39f22f\",\n        \"CreatedAt\": \"2022-08-18T01:19:41+07:00\",\n        \"UpdatedAt\": \"2022-08-18T01:19:41+07:00\",\n        \"DeletedAt\": null,\n        \"products\": [\n            {\n                \"ID\": \"07b87724-057f-44ac-8b93-b496f30785d1\",\n                \"CreatedAt\": \"2022-08-18T01:19:42+07:00\",\n                \"UpdatedAt\": \"2022-08-18T01:33:59+07:00\",\n                \"DeletedAt\": null,\n                \"product_name\": \"pampers\",\n                \"product_code\": \"2\",\n                \"quantity\": 5,\n                \"cart_id\": \"bf6b1006-7583-4e6f-a108-90936d39f22f\"\n            },\n            {\n                \"ID\": \"b70a655f-6a71-421f-bd08-3603631414ac\",\n                \"CreatedAt\": \"2022-08-18T01:36:15+07:00\",\n                \"UpdatedAt\": \"2022-08-18T01:37:02+07:00\",\n                \"DeletedAt\": null,\n                \"product_name\": \"sempak\",\n                \"product_code\": \"5\",\n                \"quantity\": 15,\n                \"cart_id\": \"bf6b1006-7583-4e6f-a108-90936d39f22f\"\n            },\n            {\n                \"ID\": \"dac863dd-009f-4d16-8505-012747bd63ed\",\n                \"CreatedAt\": \"2022-08-18T01:19:42+07:00\",\n                \"UpdatedAt\": \"2022-08-18T01:33:30+07:00\",\n                \"DeletedAt\": null,\n                \"product_name\": \"lolipop\",\n                \"product_code\": \"1\",\n                \"quantity\": 5,\n                \"cart_id\": \"bf6b1006-7583-4e6f-a108-90936d39f22f\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cart/:cartID/product/:productID",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cart",
+								":cartID",
+								"product",
+								":productID"
+							],
+							"variable": [
+								{
+									"key": "cartID",
+									"value": "a14cd162-a3e3-4368-a915-04369db2c8f2"
+								},
+								{
+									"key": "productID",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/cart/:cartID/product/:productCode",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"cart",
+										":cartID",
+										"product",
+										":productCode"
+									],
+									"variable": [
+										{
+											"key": "cartID",
+											"value": "bf6b1006-7583-4e6f-a108-90936d39f22f"
+										},
+										{
+											"key": "productCode",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 18:44:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Test Endpoint",
+			"item": [
+				{
+					"name": "Microservice",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/test/microservice",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"microservice"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Microservice",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/test/microservice",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"test",
+										"microservice"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 17:14:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1703"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"data\": \"1. Lebih cepat dalam hal time to market\\n\\t\\tSangat cocok diimplementasikan untuk melihat kondisi market\\n\\t\\tmicroservice dapat plug and play, sehingga developer bisa dengan cepat jika memang harus ada adjustment berdasarkan kebutuhan market.\\n\\t\\tMinim akan conflict, dan juga support filosofi cicd dimana bisa dengan cepat di deploy tanpa menganggu system secara kesuluruhan.\\n\\t\\t2. Menghindari single point of failure dan meningkatkan availability\\n\\t\\tDengan konsep ini tentu untuk mengurangi single point of failure karena biasanya sebuah service akan di replica dan dilakukan load balancing\\n\\t\\tsehingga pemrosesan di sebuah aplikasi dapat dibagi bebanya. dan tentu dengan adanya replica dapat membagi trafic serta tugas dari sebuah aplikasi\\n\\t\\tketika salah satu replica overload atau sedang melakukan proses lain sehingga tidak dapat melayani permintaan lainya.\\n\\t\\t3. Fault isolation\\n\\t\\tHarapanya dengan microservice failure tidak berimpak kepada service lain dan cepat menemukan sumber masalah jika memang kita mengimplementasikan\\n\\t\\ttracing data dengan baik di antar service. Selain itu mengurangi dependency terhadap service lain atau part lain dan functional tiap service dapat \\n\\t\\tterlihat jelas\\n\\t\\t4. Membagi pekerjaan dengan jelas\\n\\t\\tDengan adanya microservice pembagian pekerjaan sekaligus tim akan jauh lebih mudah karena beban tanggung jawab dapat dibagi ke beberapa tim ataupun orang.\\n\\t\\tTim atau developer pun dapat jauh lebih fokus dan jauh lebih cepat mentranslate kebutuhan tim product ataupun bisnis kedalam sebuah sistem. Handle atau identifikasi \\n\\t\\terror ataupun bug juga dapat lebih cepat ditangani.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "IndexDB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/test/dbindex",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"dbindex"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "IndexDB",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/test/dbindex",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"test",
+										"dbindex"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 17:15:04 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "999"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"data\": \"simpelnya gambaran sebuah index di database adalah seperti buku telpon jadul ataupun seperti kamus.\\n\\t\\tdimana adanya pengelompokan dan pengurutan untuk mempermudah sekaligus mempercepat proses pencarian. begitu pula index database,\\n\\t\\tketika kita membuat index di database yang dilakukan adalah mengelompokan sekaligus mengurutkan data, lebih detailnya data index disimpan\\n\\t\\tdalam sebuah struktur data yang berisi kumpulan keys beserta referensinya atau alamat ke actual data table. selain itu data tersimpan secara \\n\\t\\tberurutan dan index \\\"biasanya\\\" disimpan kedalam sebuah RAM instead of hardisk. namun yang perlu diperhatikan adalah Jangan sampai karena semua \\n\\t\\tquery ingin cepat, kita jadi membuat banyak index, yang jadinya bisa memakan storage berkali lipat dari ukuran table itu sendiri. Selain itu setiap \\n\\t\\tkita melakukan operasi CRUD, si mySQL harus melakukan pengapdetan terhadap key ke semua index yang sudah ada.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Amount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/test/money/125800",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"money",
+								"125800"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Amount",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/test/money/125800",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"test",
+										"money",
+										"125800"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 17:16:53 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"Rp 100,-\": 1,\n        \"Rp 100.000,-\": 1,\n        \"Rp 20.000,-\": 1,\n        \"Rp 200,-\": 1,\n        \"Rp 5.000,-\": 1,\n        \"Rp 500,-\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "String Edit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text1\":\"telcom\",\n    \"text2\":\"telom\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/test/string",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"string"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "String Edit",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"text1\":\"telcom\",\n    \"text2\":\"telom\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/test/string",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"test",
+										"string"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 17:25:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Docker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/test/dockerfile",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"test",
+								"dockerfile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Docker",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/test/dockerfile",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"test",
+										"dockerfile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Aug 2022 20:14:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "201"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 200,\n    \"message\": \"OK\",\n    \"payload\": {\n        \"data\": \"1. WORKDIR/ADD command seharusnya berada pada /go/src/github.com/telkomdev/indihome/backend sesuai dengan folder yg ditambahkan kedalam dockernya\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

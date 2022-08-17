@@ -1,0 +1,5 @@
+- Unit test only for service layer
+- Collection request you can import from dir test/Cart Service - Telkom Test.postman_collection.json
+- For question 1-5 you can find the answer from endpoint test -> you can refer to postman collection above
+- Run this service using `docker build -t {container_name} .` and `docker run -d {container_name}`
+- Or use `go run .` -> dont forget to `go mod tidy` first
