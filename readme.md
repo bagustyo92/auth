@@ -1,5 +1,7 @@
-- Unit test only for service layer
+- For add product, I add cart functionality for better separation, it will always creating new cart if you not send an id on the body request.
+- But if you want to add quantity on the existing cart you can use id cart for add the quantity or add new product to the cart. See example on the collection add product postman below
 - Collection request you can import from dir test/Cart Service - Telkom Test.postman_collection.json
 - For question 1-5 you can find the answer from endpoint test -> you can refer to postman collection above
+- Unit test only for service layer
 - Run this service using `docker build -t {container_name} .` and `docker run -d {container_name}`
 - Or use `go run .` -> dont forget to `go mod tidy` first
